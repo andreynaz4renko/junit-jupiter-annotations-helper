@@ -12,6 +12,7 @@
     <change-notes>
         <![CDATA[
             <ul>
+                <li><b>1.0.3</b> Added quick fixes.</li>
                 <li><b>1.0.2</b> Added checks for <code>@BeforeAll</code>, <code>@BeforeEach</code>, <code>@AfterAll</code>, and <code>@AfterEach</code> annotations.</li>
                 <li><b>1.0.1</b> Introduced checks for <code>@Disabled</code> annotations.</li>
             </ul>

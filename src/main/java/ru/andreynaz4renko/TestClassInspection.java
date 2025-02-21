@@ -3,11 +3,11 @@ package ru.andreynaz4renko;
 import static ru.andreynaz4renko.Utils.findAnnotation;
 
 import com.intellij.codeInspection.AbstractBaseJavaLocalInspectionTool;
+import com.intellij.codeInspection.LocalQuickFix;
+import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.psi.JavaElementVisitor;
-import com.intellij.psi.PsiAnnotation;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiMethod;
+import com.intellij.openapi.project.Project;
+import com.intellij.psi.*;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterAll;
@@ -99,8 +99,31 @@ public class TestClassInspection extends AbstractBaseJavaLocalInspectionTool {
             String.format(
                 "Method with annotation %s should be named \"%s\"",
                 annotation.getQualifiedName(), expectedName);
-        holder.registerProblem(method, message);
+        holder.registerProblem(method, message, new RenameMethodQuickFix(expectedName));
       }
     };
+  }
+
+  private record RenameMethodQuickFix(String expectedName) implements LocalQuickFix {
+
+    @NotNull
+    @Override
+    public String getFamilyName() {
+      return "Rename method";
+    }
+
+    @NotNull
+    @Override
+    public String getName() {
+      return "Rename method to \"" + expectedName + "\"";
+    }
+
+    @Override
+    public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+      var element = descriptor.getPsiElement();
+      if (element instanceof PsiNameIdentifierOwner method) {
+        method.setName(expectedName);
+      }
+    }
   }
 }
