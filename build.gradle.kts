@@ -31,13 +31,13 @@ tasks.buildSearchableOptions {
 }
 
 tasks.signPlugin {
-    certificateChainFile.set(file("chain.crt"))
-    privateKeyFile.set(file("private.pem"))
-    password.set("andrey")
+    certificateChain.set(providers.environmentVariable("CERTIFICATE_CHAIN"))
+    privateKey.set(providers.environmentVariable("PRIVATE_KEY"))
+    password.set(providers.environmentVariable("PRIVATE_KEY_PASSWORD"))
 }
 
 tasks.publishPlugin {
-    token.set("perm:a961riC....l17oW8t+Qw==")
+    token.set(providers.environmentVariable("PUBLISH_TOKEN"))
 }
 
 tasks.patchPluginXml {
