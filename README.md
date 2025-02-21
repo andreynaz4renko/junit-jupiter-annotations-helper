@@ -1,6 +1,6 @@
-# JUnit Inspections Plugin 🚀
+# JUnit Jupiter Annotations Helper Plugin 🚀
 
-Welcome to the **JUnit Inspections Plugin** for IntelliJ IDEA! This plugin helps you keep your JUnit tests clean and
+Welcome to the **JUnit Jupiter Annotations Helper Plugin** for IntelliJ IDEA! This plugin helps you keep your JUnit tests clean and
 consistent with two powerful code inspections. Built with ❤️ by [andreynaz4renko](https://github.com/andreynaz4renko).
 
 ---
@@ -50,7 +50,7 @@ consistent with two powerful code inspections. Built with ❤️ by [andreynaz4r
 
 ### Configuration ⚙️
 
-- Open `Settings > Tools > Autotests Annotation Helper` in IntelliJ IDEA.
+- Open `Settings > Tools > JUnit Jupiter Annotations Helper` in IntelliJ IDEA.
 - Customize prefixes and method names to fit your team’s style!
 
 ### Usage 🖥️
@@ -64,9 +64,9 @@ consistent with two powerful code inspections. Built with ❤️ by [andreynaz4r
 Love the plugin? Want to make it better? Contributions are welcome! 🌟
 
 1. Fork this repo 🍴
-2. Create a feature branch (git checkout -b feature/awesome-idea)
-3. Commit your changes (git commit -m "Add something cool")
-4. Push to your branch (git push origin feature/awesome-idea)
+2. Create a feature branch (`git checkout -b feature/awesome-idea`)
+3. Commit your changes (`git commit -m "feat: add something cool"`)
+4. Push to your branch (`git push origin feature/awesome-idea`)
 5. Open a Pull Request! 🙌
 
 ### Issues & Feedback 🐛

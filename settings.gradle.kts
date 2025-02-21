@@ -1,2 +1,1 @@
-rootProject.name = "autotests-annotations-helper"
-
+rootProject.name = "junit-jupiter-annotations-helper-plugin"
