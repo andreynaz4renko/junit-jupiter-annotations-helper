@@ -1,0 +1,31 @@
+<html lang="en">
+<body>
+<p>
+    Verifies that JUnit lifecycle method names match their expected values based on annotations.
+</p>
+<p>
+    This inspection checks methods annotated with `@BeforeAll`, `@BeforeEach`, `@AfterAll`, or `@AfterEach` in JUnit
+    test classes. It ensures that each method’s name aligns with a configurable expected name defined in the settings.
+    If a mismatch is found, the issue is flagged to enforce consistent naming conventions for test lifecycle methods
+    across your project.
+</p>
+<p>
+    See <a href="https://plugins.jetbrains.com/docs/intellij/inspections.html#descriptions">official documentation</a>
+    for more details on writing inspections.
+</p>
+<p>
+    Example of a flagged method:
+</p>
+<pre><code>
+@BeforeAll
+public static void setup() { // Expected name: "beforeAll"
+    // Initialization code
+}
+</code></pre>
+<!-- tooltip end -->
+<p>
+    Adjust the expected method names via <a href="settings://$AnnotationHelperPluginSettings?$beforeAllMethodName">inspection
+    settings</a>.
+</p>
+</body>
+</html>

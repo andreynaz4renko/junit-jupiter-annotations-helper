@@ -1,0 +1,33 @@
+<html lang="en">
+<body>
+<p>
+    Detects inconsistencies between the `@Disabled` annotation and the `@DisplayName` prefix in JUnit tests.
+</p>
+<p>
+    This inspection ensures that JUnit test methods annotated with `@Test` and `@DisplayName` follow a specific naming
+    convention based on their enabled or disabled state. If a test is marked with `@Disabled`, its display name should
+    start with a configurable prefix (defined in the settings). Conversely, if a test lacks the `@Disabled` annotation,
+    its display name should not begin with that prefix. Violations are highlighted to maintain consistent test naming
+    practices.
+</p>
+<p>
+    See <a href="https://plugins.jetbrains.com/docs/intellij/inspections.html#descriptions">official documentation</a>
+    for more details on writing inspections.
+</p>
+<p>
+    Example of a problematic test method:
+</p>
+<pre><code>
+@Test
+@DisplayName("DISABLED: Should process data")
+public void testMethod() {
+    // Test code here
+}
+</code></pre>
+<!-- tooltip end -->
+<p>
+    Customize the expected prefix for disabled tests via <a href="settings://$AnnotationHelperPluginSettings?$disabledTestsPrefix">inspection
+    settings</a>.
+</p>
+</body>
+</html>

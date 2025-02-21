@@ -1,0 +1,79 @@
+<idea-plugin require-restart="false">
+    <id>ru.andreynaz4renko.autotests-annotations-helper</id>
+    <name>Autotests Annotations Helper</name>
+    <description>
+        <![CDATA[
+      Demonstrates implementing a Local Inspection Tool.<br> Adds entries to
+      <b>Settings | Editor | Inspections | Java | Probable Bugs</b>.
+    ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+      <ul>
+        <li><b>1.0.2</b> @BeforeAll, @BeforeEach, @AfterAll, @AfterEach annotations checks.</li>
+        <li><b>1.0.1</b> @Disabled annotations checks.</li>
+      </ul>
+    ]]>
+    </change-notes>
+    <vendor email="andreynaz4renko@gmail.com" url="https://t.me/nazarenk0">Andrey Nazarenko</vendor>
+
+    <dependencies>
+        <plugin id="com.intellij.modules.platform"/>
+        <plugin id="com.intellij.modules.java"/>
+    </dependencies>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!--
+        Extend the IntelliJ Platform local inspection type and connect it to the implementation class in this plugin.
+        <localInspection> type element is applied within the scope of a file under edit.
+        It is preferred over <inspectionToolProvider>
+        @see com.intellij.codeInspection.InspectionProfileEntry
+
+        Attributes:
+        - language - inspection language ID
+        - shortName - not specified, will be computed by the underlying implementation classes
+        - bundle - name of the message bundle for the "key" attribute
+        - key - the key of the message to be shown in the Settings | Editor | Inspections panel
+        - groupPath - defines the outermost grouping for this inspection in
+            the Settings | Editor | Inspections panel. Not localized.
+        - groupBundle - the name of a message bundle file to translate groupKey
+            In this case, reuse an IntelliJ Platform bundle file from intellij.platform.resources.en
+        - groupKey - the key to use for translation subgroup name using groupBundle file.
+            In this case, reuse the IntelliJ Platform subcategory "Probable bugs"
+        - enabledByDefault - inspection state when the Inspections panel is created.
+        - level - the default level of error found by this inspection, e.g. INFO, ERROR, etc.
+            @see com.intellij.codeHighlighting.HighlightDisplayLevel
+        - implementationClass - the fully-qualified name of the inspection implementation class
+        -->
+        <localInspection language="JAVA"
+                         bundle="messages.InspectionBundle"
+                         key="inspection.error"
+                         groupPath="Java"
+                         groupBundle="messages.InspectionsBundle"
+                         groupKey="group.names.probable.bugs"
+                         enabledByDefault="true"
+                         level="ERROR"
+                         implementationClass="ru.andreynaz4renko.DisabledTestInspection"/>
+
+        <localInspection language="JAVA"
+                         bundle="messages.InspectionBundle"
+                         key="inspection.error"
+                         groupPath="Java"
+                         groupBundle="messages.InspectionsBundle"
+                         groupKey="group.names.probable.bugs"
+                         enabledByDefault="true"
+                         level="ERROR"
+                         implementationClass="ru.andreynaz4renko.TestClassInspection"/>
+
+        <projectConfigurable
+                parentId="tools"
+                instance="ru.andreynaz4renko.ProjectSettingsConfigurable"
+                id="ru.andreynaz4renko.ProjectSettingsConfigurable"
+                displayName="Autotests Annotation Helper"/>
+
+        <projectService serviceImplementation="ru.andreynaz4renko.ProjectSettings" />
+    </extensions>
+
+    <actions>
+    </actions>
+</idea-plugin>
